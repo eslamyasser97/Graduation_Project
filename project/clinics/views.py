@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 from django.http import HttpResponse
 
-
+@login_required()
 def clinic_list(request):
     clinic_list = clinic.objects.all()
     context = {'clinics' : clinic_list}

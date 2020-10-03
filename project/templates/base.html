@@ -55,29 +55,27 @@
                                 <ul id="navigation">
                                     <li><a href="{% url 'clinics:clinic_list' %}">احجز العياده</a></li>|
                                     <li><a href="">المقالات</a></li>|
-                                    <li><a href="{% url 'clinics:clinic_profile' %}">الصفحه العياده </a></li>|
-                                    <li><a href="contact.html">اتصل بنا</a></li>
+                                    <li><a href="{% url 'accounts:profile' %}">الصفحه الشخصيه </a></li>|
+                                    <li><a href="{% url 'contact:contact' %}">تواصل معنا </a></li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                         <div class="Appointment">
-
-                            {% if user.is_authenticated %}
-
-                                <div class="phone_num d-none d-xl-block"></div>
-                                <div class="d-none d-lg-block">
-                                    <a class="boxed-btn3" href="">قدم نفسك</a>
-                                </div>
-                            {% else %}
+                            {% if request.user.is_authenticated %}
+                            <div class="phone_num d-none d-xl-block">
+                                 <a class="boxed-btn3" style="background-color:#808080;" href="{% url 'accounts:profile_edit' %}"> تعديل حساب</a>
+                            </div>
+                            {%else%}
                                 <div class="phone_num d-none d-xl-block">
-                                    <a class="boxed-btn3" href="">سجل الدخول</a>
+                                    <a class="boxed-btn3" href="{% url 'login'%}">سجل الدخول</a>
                                 </div>
-                                <div class="d-none d-lg-block">
-                                    <a class="boxed-btn3" style="background-color: crimson;" href="">التسجيل</a>
-                                </div>
-                            {% endif %}
+
+                            <div class="d-none d-lg-block">
+                                    <a class="boxed-btn3" style="background-color: arctic;" href="{% url 'accounts:signup' %}">تسجيل حساب</a>
+                            </div>
+                            {%endif%}
                         </div>
                     </div>
                     <div class="col-12">
