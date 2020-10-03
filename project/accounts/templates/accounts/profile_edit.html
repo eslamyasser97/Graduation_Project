@@ -4,7 +4,9 @@
 {% block content %}
   <form action="" method="post">
       {% csrf_token %}
-      {{form|crispy}}
-      <input type="submit" class="boxed-btn3 w-100" value="Change password">
+      {{userform|crispy}}
+      {{profileform|crispy}}
+
+      <input type="submit" class="boxed-btn3 w-100" value="اضف التعديلات">
   </form>
 {% endblock %}
