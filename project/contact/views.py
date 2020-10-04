@@ -18,12 +18,16 @@ def send_message(request):
         print(email)
         print(message)
         send_mail(
-            subject,
-            message,
-            EMAIL_HOST_USER,
-            [email],
+            subject, # SUBJECT
+            message, #message
+            email, # from email
+            ['eslam.yasser.hassan@gmail.com'], # to email (support mail)
         )
+        context = {'myinfo': myinfo,'subject':subject}
+        return render(request, 'contact/contact.html', context)
         print(subject)
         print(email)
         print(message)
-    return render(request,'contact/contact.html',{'myinfo':myinfo})
+    else:
+        context = {'myinfo':myinfo}
+        return render(request,'contact/contact.html',context)
