@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'clinics',
+    'contact',
     'crispy_forms',
     'bootstrap4',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -131,4 +133,12 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
 
-##Login_URL = 'clinics:clinic_login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_USE_TLS=1
+EMAIL_PORT=587
+EMAIL_HOST_USER = 'solomce@gmail.com'
+EMAIL_HOST_PASSWORD = 'ehfgzqronmxtkqmr'
+
+EMAIL_PORT = '587' ##google port for mail service

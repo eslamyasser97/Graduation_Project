@@ -5,12 +5,18 @@ from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
+TYPE_OF_PERSON=(
+    ('M',"ذكر"),
+    ('F', "انثي"),
+)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     city = models.ForeignKey('city', related_name='user_city', on_delete=models.CASCADE,blank=True,null=True)
     telephone = models.CharField(_('رقم الهاتف'),max_length=40)
+    type_of_person = models.CharField(_('النوع'),choices=TYPE_OF_PERSON,max_length=5)
     image = models.ImageField(_(': الصوره البطاقه الشخصيه'),upload_to='profile',blank=True,null=True)
+
 
 
     def __str__(self):

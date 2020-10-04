@@ -4,15 +4,25 @@ from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 from django.db.models.signals import post_save
 # Create your models here.
+
+TYPE_OF_CITY=(
+    ('alex',"الاسكندريه"),
+    ('cairo', "القاهره"),
+    ('matroh', "مطروح"),
+    ('aswan', "اسوان"),
+
+)
+
 class clinic(models.Model):
     admin = models.ForeignKey(User, related_name='clinc_admin', on_delete=models.CASCADE)
     name = models.CharField(_(': الاسم'), max_length=50)
+    type_of_city = models.CharField(_('المحافظه'), choices=TYPE_OF_CITY,max_length=15)
     services = models.CharField(_('الخدمات المقدمه'),max_length=4000)
     subtitle = models.CharField(_(': نبذه عن العياده'),max_length=1000,blank=True,null=True)
     telephone = models.CharField(_('رقم الهاتف'),max_length=40)
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(_(': الصوره الخاصه بالعياده'),upload_to='clinic',blank=True,null=True)
-    works_hour = models.IntegerField(_(': ساعات العمل اليوميه'),max_length=10)
+    works_hour = models.IntegerField(_(': ساعات العمل اليوميه'))
     facebook = models.CharField(_(': لينك صفحه الفيسبوك'),max_length=40,blank=True,null=True)
     twitter = models.CharField(_(': لينك تويتر '), max_length=40,blank=True,null=True)
     email = models.EmailField(_(': الايميل:'), max_length=40,blank=True,null=True)

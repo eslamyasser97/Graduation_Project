@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.urls import reverse
-
+from .filters import ClinicFilter
 from .models import clinic
 from .forms import ApplyForm , Add_Clinic
 from django.contrib.auth import authenticate , login
@@ -12,7 +12,8 @@ from django.http import HttpResponse
 @login_required()
 def clinic_list(request):
     clinic_list = clinic.objects.all()
-    context = {'clinics' : clinic_list}
+    clinic_filter = ClinicFilter(request.GET,queryset=clinic_list)
+    context = {'clinics' : clinic_list,'myfilter':clinic_filter}
     return render(request,'clinic/Clinics_list.html',context)
 
 def clinic_detail(request,slug):

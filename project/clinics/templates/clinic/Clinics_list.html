@@ -29,7 +29,7 @@
                                     <a href="{% url 'clinics:clinic_detail' clinic.slug  %}"><h5>العياده {{clinic.name}} </h5></a>
                                     {% if clinic.subtitle %}
                                     <h6>{{clinic.subtitle}}</h6>
-                                    else
+                                    {%else%}
                                     <h6></h6>
                                     {% endif %}
                                     <div class="links_locat">
